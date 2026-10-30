@@ -1,4 +1,4 @@
-# pentest-agent (work in progress)
+# Daybreak (work in progress)
 
 Authorized-lab use only. The model proposes; the policy gateway decides.
 
