@@ -1,0 +1,18 @@
+{
+  "category": "reflected_input",
+  "description": "Guidance for generating reflected-input (textual reflection / potential XSS) validation strategies over a single HTTP response, not a browser.",
+  "consider": [
+    "parameter data type and location",
+    "response content type (HTML vs JSON vs other - encoding expectations differ)",
+    "whether the marker is echoed at all, and if so, raw vs HTML-entity-escaped",
+    "security headers already observed as present or absent (e.g. Content-Security-Policy)",
+    "that this is a textual check and cannot confirm script execution in a real DOM"
+  ],
+  "references": [
+    "OWASP Web Security Testing Guide - Testing for Reflected Cross Site Scripting",
+    "CWE-79: Improper Neutralization of Input During Web Page Generation"
+  ],
+  "example_patterns": [
+    "a short, uniquely-identifiable marker containing an HTML-meaningful character, checked for raw vs escaped reflection"
+  ]
+}

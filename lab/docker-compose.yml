@@ -1,0 +1,14 @@
+# Dev-mode lab: Juice Shop reachable ONLY from this PC via 127.0.0.1:3000.
+# NOTE: not run by me (no Docker in my sandbox). Validate with:  docker compose -f lab/docker-compose.yml config
+services:
+  juice-shop:
+    # Replace <DIGEST> after pulling (see README steps). Never use :latest for evaluation runs.
+    image: bkimminich/juice-shop@sha256:42843723a7bf4246aa5d63c324978b17ef296ac78434aeddd34c427bfb5853f4
+    container_name: pagent-juice-shop
+    ports:
+      - "127.0.0.1:${JUICE_PORT:-5000}:3000"   # loopback only; set $env:JUICE_PORT to change host port
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 1g
+    pids_limit: 256
+    restart: "no"

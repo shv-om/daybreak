@@ -1,0 +1,12 @@
+{
+  "engagement_id": "LAB-JUICESHOP-INFRA",
+  "authorized_by": "self - local lab container owned by me",
+  "valid_from": "2026-10-23T00:00:00+00:00",
+  "valid_until": "2027-01-31T00:00:00+00:00",
+  "allowed_hosts": ["localhost"],
+  "allowed_cidrs": [],
+  "excluded_hosts": [],
+  "allowed_ports": [80, 443, 5000, 8080],
+  "allowed_tools": ["http_head", "nmap_tcp"],
+  "intrusive_allowed": false
+}

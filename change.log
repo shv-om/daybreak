@@ -1,0 +1,83 @@
+2026-10-30 — Phase 3a: recommendation-only action planner
+
+- Added `src/pagent/orchestrator.py` to request one structured recommendation from the current
+  scope-derived action registry, with `stop` and `ask_human` control choices.
+- Validated the model response against the exact current registry and resolved the action back to
+  its trusted `ActionSpec`; model output cannot provide tool arguments.
+- Added interactive agent menu option `[10]` to display a recommendation without executing it.
+- Kept target response evidence in the existing untrusted-context channel. Recommendations still
+  require a person to run the action through the existing policy and approval paths.
+- Updated README documentation. No tests were added or run in this increment.
+
+2026-10-30 — Phase 3b: confirmed single-action handoff
+
+- Connected read-only batch recommendations to their existing `Session` handlers.
+- Added a per-recommendation `y/N` confirmation. Declining leaves the session unchanged.
+- Kept targeted/approval-gated recommendations out of the dispatcher; the planner points to the
+  existing intrusive menu and its approval flow instead.
+- Reject planner rationales containing terminal control characters before display.
+- Updated README and interactive help. No tests were added or run in this increment.
+
+2026-10-30 — Orchestrator architecture plan
+
+- Added `ORCHESTRATOR_PLAN.md` to define a scope-bound path toward higher routine-work automation.
+- Specified target selection as a match against an existing authorization scope, never as authority
+  by itself; scope cannot expand from discovery.
+- Defined the proposed chronological action ledger, bounded routine supervisor, queued exact-action
+  approvals, safe resume behavior, stop conditions, and evaluation metrics.
+- Recorded the implementation order: persist run state and ledger before multi-step continuation.
+- No runtime behavior changed and no tests were added or run.
+
+2026-10-30 — Phase 3c: persistent action ledger
+
+- Added an append-only `action_events` table to the existing SQLite store for planner decisions,
+  operator confirmations, dispatch lifecycle, and handoffs.
+- Built a chronological ledger view by combining those events with stored tool-call metadata and
+  finding evidence references; response bodies are excluded.
+- Added the ledger to JSON/Markdown reports, including a Markdown table with timestamps, tools,
+  targets, decisions, outcomes, and linked finding IDs.
+- Recorded per-action confirmation and dispatch lifecycle from the interactive planner.
+- Updated README and orchestrator milestones. No tests were added or run in this increment.
+
+2026-10-30 — Ledger status classification fix
+
+- Separated successful tool calls, execution failures, pending approvals, and policy denials in
+  the report ledger. A failed network connection is no longer labeled as a policy denial.
+- Existing generated reports are left untouched; the corrected label applies to reports generated
+  after this change. No tests were run.
+
+2026-10-30 — Loopback lab routine
+
+- Added `--lab-routine` to run availability preflight, fixed content discovery, configured crawl
+  seeds, and a capped one-hop scan of same-host JavaScript references in one launch.
+- Restricted the mode to one currently valid loopback host and one port, with only `http_head`,
+  `http_get`, and `dir_probe`; it rejects CIDRs, intrusive targets, broader tools, and unbounded
+  seed/prefix lists.
+- JavaScript fetching is capped at 10 same-host `.js` paths, uses a transient derived scope without
+  changing the scope file, and never follows off-host links or extracted endpoints. Existing JS
+  signal handling redacts credential-shaped values.
+- The routine stops if a stage's tool calls all fail and records stage lifecycle in the action log.
+- Updated README and the architecture plan. No tests were added or run.
+
+2026-10-30 — Evidence-driven local brain loop
+
+- Changed the one-command loopback mode from a fixed stage sequence to a model-driven selection
+  loop. After each action, the model sees updated findings and bounded evidence, then chooses the
+  next remaining registered read-only batch action or stops/asks for a human.
+- Requires an Ollama model and performs no per-action confirmation; launching `--lab-brain` is the
+  explicit operator start. `--lab-routine` remains an alias.
+- Keeps the loop restricted to one valid loopback host/port and read-only registered actions;
+  intrusive actions are excluded. Automatic finding review/proposals remain proposal-only.
+- Updated README and architecture plan. No tests were added or run.
+
+2026-10-30 — AI review visibility and limits
+
+- The action ledger now records AI finding-triage decisions, including the reasoning model,
+  reviewed finding IDs, per-finding notes, IDs prioritized for further review, and review failures.
+- Preserved the reviewer's bounded per-finding notes in the proposal report rather than dropping
+  them after triage in both the interactive agent and standalone proposal command; added
+  duplicate/unknown finding reference rejection.
+- Documented that AI triage prioritizes findings and does not confirm their truth; narrow
+  deterministic repeat checks remain the verification mechanism.
+- Updated the brain-mode and architecture documentation to describe the AI role accurately.
+  No tests were added or run.

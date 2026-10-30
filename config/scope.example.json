@@ -1,0 +1,12 @@
+{
+  "engagement_id": "LAB-EXAMPLE-001",
+  "authorized_by": "SYNTHETIC EXAMPLE - replace with real authorizer",
+  "valid_from": "2026-01-01T00:00:00+00:00",
+  "valid_until": "2027-01-01T00:00:00+00:00",
+  "allowed_hosts": ["juice-shop.lab.internal"],
+  "allowed_cidrs": ["10.77.0.0/24"],
+  "excluded_hosts": ["10.77.0.1"],
+  "allowed_ports": [3000, 8080],
+  "allowed_tools": ["http_head"],
+  "intrusive_allowed": false
+}

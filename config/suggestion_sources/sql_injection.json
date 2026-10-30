@@ -1,0 +1,21 @@
+{
+  "category": "sql_injection",
+  "description": "Guidance for generating SQL injection validation strategies focused on response-shape comparison, not data extraction.",
+  "consider": [
+    "parameter data type and location (query string vs JSON body field)",
+    "request method",
+    "baseline status code and response length",
+    "error-message behaviour vs silent failure",
+    "boolean-pair comparison (true-like vs false-like condition)",
+    "response structure and content type",
+    "whether the endpoint is authentication-related (higher impact, same test discipline)"
+  ],
+  "references": [
+    "OWASP Web Security Testing Guide - Testing for SQL Injection",
+    "CWE-89: Improper Neutralization of Special Elements used in an SQL Command"
+  ],
+  "example_patterns": [
+    "a trailing single quote to look for a broken/escaped-quote response-shape difference",
+    "a true-vs-false boolean pair compared against the recorded baseline, not against each other alone"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.1",
+  "mappings": {
+    "missing-header:content-security-policy": {
+      "cwe_ids": [
+        "CWE-693"
+      ],
+      "rationale": "CSP is a defence-in-depth protection mechanism; absence is commonly filed under protection-mechanism failure. It does not by itself indicate XSS.",
+      "review_status": "reviewed"
+    },
+    "missing-header:x-frame-options": {
+      "cwe_ids": [
+        "CWE-1021"
+      ],
+      "rationale": "Framing restrictions relate to rendered UI layers and frames (clickjacking).",
+      "review_status": "reviewed"
+    },
+    "missing-header:x-content-type-options": {
+      "cwe_ids": [
+        "CWE-693"
+      ],
+      "rationale": "MIME-sniffing protection is a defence-in-depth mechanism.",
+      "review_status": "reviewed"
+    },
+    "missing-header:referrer-policy": {
+      "cwe_ids": [],
+      "rationale": "No well-fitting CWE chosen; referrer leakage depends on application content. Left unmapped on purpose.",
+      "review_status": "reviewed"
+    },
+    "missing-header:permissions-policy": {
+      "cwe_ids": [
+        "CWE-693"
+      ],
+      "rationale": "Browser-feature restriction is a defence-in-depth mechanism.",
+      "review_status": "reviewed"
+    },
+    "missing-header:strict-transport-security": {
+      "cwe_ids": [
+        "CWE-319"
+      ],
+      "rationale": "Relates to cleartext transmission. The finding stays inconclusive when the target was tested over plain HTTP.",
+      "review_status": "reviewed"
+    },
+    "open-port": {
+      "cwe_ids": [],
+      "rationale": "Informational exposure observation, not a weakness.",
+      "review_status": "reviewed"
+    }
+  }
+}

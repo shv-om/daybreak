@@ -1,0 +1,31 @@
+{
+  "engagement_id": "LAB-JUICESHOP-INTRUSIVE",
+  "authorized_by": "self - local lab container owned by me",
+  "valid_from": "2026-10-23T00:00:00+00:00",
+  "valid_until": "2027-01-31T00:00:00+00:00",
+  "allowed_hosts": [
+    "localhost"
+  ],
+  "allowed_cidrs": [],
+  "excluded_hosts": [],
+  "allowed_ports": [
+    5000
+  ],
+  "allowed_tools": [
+    "reflect_probe",
+    "sqli_probe",
+    "login_sqli_probe",
+    "fuzz_probe"
+  ],
+  "intrusive_allowed": true,
+  "allowed_probe_targets": [
+    {
+      "path": "/rest/products/search",
+      "param": "q"
+    },
+    {
+      "path": "/rest/user/login",
+      "param": "email"
+    }
+  ]
+}

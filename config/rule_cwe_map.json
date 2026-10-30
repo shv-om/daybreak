@@ -1,0 +1,8 @@
+{
+  "_note": "Analyst-curated mapping from our rule ids to CWE ids. Status 'unreviewed' means a human has not yet confirmed it. A CWE id is attached to a finding only if it exists in the ingested CWE catalog; the name shown comes from that catalog, not from this file.",
+  "missing-header:content-security-policy":   {"cwe": ["CWE-693"], "review": "unreviewed", "rationale": "A defensive browser control is not configured."},
+  "missing-header:x-frame-options":           {"cwe": ["CWE-693", "CWE-1021"], "review": "unreviewed", "rationale": "Framing restriction not configured."},
+  "missing-header:x-content-type-options":    {"cwe": ["CWE-693"], "review": "unreviewed", "rationale": "A defensive browser control is not configured."},
+  "missing-header:referrer-policy":           {"cwe": ["CWE-693"], "review": "unreviewed", "rationale": "A defensive browser control is not configured."},
+  "missing-header:permissions-policy":        {"cwe": ["CWE-693"], "review": "unreviewed", "rationale": "A defensive browser control is not configured."}
+}
